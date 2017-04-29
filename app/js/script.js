@@ -137,6 +137,7 @@ var markers = [];
       });
     marker.addListener('click', function() {
       console.log(marker.label);
+      fetchBloodClinicServer();
     });
     return marker;
   });
@@ -178,13 +179,38 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 // bloodclinicserver
-const uri = 'http://localhost:5000/api'
-const date = new Date()
-const payload = {'date': date}
-const headers = new Headers({'Content-Type': 'application/json'})
-fetch(uri, {
-  method: 'POST',
-  body: JSON.stringify(payload),
-  headers: headers
-}).then((response) =>
-  response.json()).then(json => console.log(json))
+const initialState = {
+  current_rate: {
+    'hs': null,
+    'mp': null,
+    'sc': null,
+    'wf': null
+  },
+  daily_rates: {
+    'hs': null,
+    'mp': null,
+    'sc': null,
+    'wf': null
+  }
+}
+
+var store = initialState
+
+const fetchBloodClinicServer = () => {
+  const uri = 'http://localhost:5000/api'
+  const date = new Date()
+  const payload = {'date': date}
+  const headers = new Headers({'Content-Type': 'application/json'})
+  fetch(uri, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: headers
+  })
+    .then((response) =>
+      response.json())
+    .then(json => {
+      console.log(store)
+      store = json
+      console.log(store)
+    })
+}
