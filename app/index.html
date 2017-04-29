@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+    <title>Blood Clinic App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="js/script.js"></script>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="css/storelocator.css"> -->
+	</head>
+
+	<body>
+					
+		<div class="container">
+			<h1>Blood Clinic App</h1>
+			<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+			<hr>
+			<h3>Choose a Location</h3>
+			<!-- <div id="panel"></div> -->
+			<input id="pac-input" class="controls" type="text" placeholder="Find a clinic..." style="width:70%;height:20px;">
+			<div id="map" style="width:100%;height:500px"></div> <!-- Google Maps-->
+			<br>
+		</div>
+
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3_sShiBsrFUV5rG4cWZZonUyabkxQTWA&libraries=places&callback=initMap"></script>
+	</body>
+
+</html>
