@@ -54,7 +54,7 @@ function initMap() {
     handleLocationError(false, infoWindow, map.getCenter());
   }
 
-  
+
   // show nearest clinic
   // var service = new google.maps.places.PlacesService(map);
   // service.nearbySearch({
@@ -137,7 +137,7 @@ var markers = [];
 
   var markerCluster = new MarkerClusterer(map, markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-      
+
 }
 
 function callback(results, status) {
@@ -163,3 +163,15 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
 }
+
+// bloodclinicserver
+const uri = 'http://localhost:5000/api'
+const date = new Date()
+const payload = {'date': date}
+const headers = new Headers({'Content-Type': 'application/json'})
+fetch(uri, {
+  method: 'POST',
+  body: JSON.stringify(payload),
+  headers: headers
+}).then((response) =>
+  response.json()).then(json => console.log(json))
