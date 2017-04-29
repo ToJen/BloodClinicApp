@@ -12,16 +12,16 @@ function initMap() {
     map: map
   });
 
-  // var infoText = "................";
-  // var clinicInfo = new google.maps.InfoWindow({
-  //   content: infoText,
-  //   maxWidth: 400
-  // });
+  /* var infoText = "................";
+   * var clinicInfo = new google.maps.InfoWindow({
+   *   content: infoText,
+   *   maxWidth: 400
+   * });
 
-  // marker.addListener('click', function() {
-  //   clinicInfo.open(map, marker);
-  //   alert("demo");
-  // });
+   * marker.addListener('click', function() {
+   *   clinicInfo.open(map, marker);
+   *   alert("demo");
+   * });*/
 
   var currLocImg = "imgs/bluecircle.png";
 
@@ -129,10 +129,17 @@ var markers = [];
   // cluster clinic locations
   var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   var markers = locations.map(function(location, i) {
-    return new google.maps.Marker({
-      position: location,
-      label: labels[i % labels.length]
+    console.log(location)
+    console.log(ids[i])
+      let marker = new google.maps.Marker({
+        position: location,
+        label: ids[i]
+      });
+    /* google.maps.event.addListener(marker, 'click', function() {console.log(marker.label);});*/
+    marker.addListener('click', function() {
+      console.log(marker.label);
     });
+    return marker;
   });
 
   var markerCluster = new MarkerClusterer(map, markers,
@@ -153,6 +160,13 @@ var locations = [
   {lat: 47.6102897, lng: -52.7249336},  // majorsPath
   {lat: 47.5574587, lng: -52.7215271},  // stClaresMercy
   {lat: 47.5287682, lng: -52.7496391}   // waterford
+];
+
+var ids = [
+  'hs',
+  'mp',
+  'sc',
+  'wf'
 ];
 
 // necessary?
