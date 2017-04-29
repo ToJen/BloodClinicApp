@@ -197,7 +197,7 @@ const initialState = {
 var store = initialState
 
 const fetchBloodClinicServer = () => {
-  const uri = 'http://localhost:5000/api'
+  const uri = 'http://bloodclinicserver.herokuapp.com/api'
   const date = new Date()
   const payload = {'date': date}
   const headers = new Headers({'Content-Type': 'application/json'})
