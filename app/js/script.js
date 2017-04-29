@@ -135,7 +135,6 @@ var markers = [];
         position: location,
         label: ids[i]
       });
-    /* google.maps.event.addListener(marker, 'click', function() {console.log(marker.label);});*/
     marker.addListener('click', function() {
       console.log(marker.label);
     });
