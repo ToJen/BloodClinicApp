@@ -15,10 +15,52 @@
 	</head>
 
 	<body>
+		<!-- <p id="top"></p> -->
 
 		<!-- add navbar to go to feedback section flat, bright red and white, scroll to top feature
 				where are you now? how long was your ride here? time logged in? duration of wait? time left?
 		-->
+		<!-- Static navbar -->
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="#" title="Blood Clinic App">
+		      	<img class="responsive" id="logo" alt="Brand" src="imgs/hh_logo.jpeg" style="max-width:40px; margin-top: -10px;">
+		      </a>
+		    </div>
+		    <div id="navbar" class="navbar-collapse collapse">
+		      <ul class="nav navbar-nav">
+		        <li class="active"><a href="#">Home</a></li>
+		        <li><a href="#">About</a></li>
+		        <li><a href="#feedback">Feedback</a></li>
+		        <li><a href="#">Contact</a></li>
+		        <!-- <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="#">Action</a></li>
+		            <li><a href="#">Another action</a></li>
+		            <li><a href="#">Something else here</a></li>
+		            <li role="separator" class="divider"></li>
+		            <li class="dropdown-header">Nav header</li>
+		            <li><a href="#">Separated link</a></li>
+		            <li><a href="#">One more separated link</a></li>
+		          </ul>
+		        </li> -->
+		      </ul>
+		      <!-- <ul class="nav navbar-nav navbar-right">
+		        <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
+		        <li><a href="../navbar-static-top/">Static top</a></li>
+		        <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+		      </ul> -->
+		    </div>		<!--/.nav-collapse -->
+		  </div>			<!--/.container-fluid -->
+		</nav>
 					
 		<div class="container">
 			<h1>Blood Clinic App</h1>
@@ -42,7 +84,7 @@
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times</span>
 			        </button>
-			        <h4 class="modal-title" id="clinicLabel"></h4>		<!-- clinic name -->
+			        <h4 class="modal-title" id="clinicLabel">Clinic Name</h4>		<!-- clinic name -->
 			      </div> <!-- .modal-header -->
 
 			      <div class="modal-body">
@@ -56,20 +98,34 @@
 			      	  <div id="popTimes" class="tab-pane fade in active">
 			      	    <h3>Popular Times</h3>
 			      	    <p>Best time to visit</p>
+			      	    <div class="container" id="graph">
+			      	    	<!-- plot graph using fetched data -->
+			      	    </div>
+			      	    <p>Display graphy by</p>
+			      	    <div class="dropdown">
+								    <button class="btn btn-default dropdown-toggle" type="button" id="filterPlot" data-toggle="dropdown">Tutorials <span class="caret"></span></button>
+								    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+								      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Day</a></li>
+								      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Month</a></li>
+								      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Year</a></li>
+								      <li role="presentation" class="divider"></li>
+								      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Specific Date</a></li>
+								    </ul>
+			      	    </div>	<!-- .dropdown -->
 			      	  </div>		<!-- #popTimes -->
 			      	  <div id="details" class="tab-pane fade">
 			      	    <h3>Detials</h3>
 			      	    <div class="row">
 			      	    	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 					      	    <ul class="list-group">
-					      	      <li class="list-group-item">Address:</li>
+					      	      <li class="list-group-item">Address:</li>	<!-- use glyphicons or fontawesome icons -->
 					      	      <li class="list-group-item">Hours:</li>
 					      	      <li class="list-group-item">Contact:</li>
 					      	      <li class="list-group-item">Wheelchair accessible:</li>
 					      	    </ul>
 					      	  </div>
 			      	    	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-					      	    <img src="imgs/majors_path.jpg" id="clinicImg">
+					      	    <img class="img-responsive" id="clinicImg" src="imgs/majors_path.jpg">
 					      	  </div>
 					      	</div>	<!-- .row 				-->
 			      	  </div>		<!-- #details 		-->
@@ -78,12 +134,36 @@
 			      </div> <!-- .modal-body   -->
 
 			      <div class="modal-footer">
+			      	<p>Hacking Health St. John's Hackathon 2017</p>
 			      </div> <!-- .modal-footer -->
 
 			    </div>  <!-- .modal-content -->
 			  </div>    <!-- .modal-dialog  --> 
 			</div>      <!-- .modal-fade    -->
-		</div>
+
+			<p class="pull-right"><a href="#" id="backToTop" class="btn btn-primary btn-lg backToTop" role="button">
+				<span class="glyphicon glyphicon-chevron-up"></span></a></p>
+
+		</div>				<!-- .container 		-->
+ 
+		<!--   <div class="container" id="feedback">
+
+		</div> -->
+
+		<script>
+			// for scroll to top button
+			$(window).scroll(function() {
+				if ($(this).scrollTop() > 50) 
+					$("#backToTop").fadeIn();
+				else
+					$("#backToTop").fadeOut();
+			});
+
+			$("#backToTop").click(function() {
+			  $("html, body").animate({scrollTop: 10}, 800);
+			  return false;
+			});
+		</script>		
 
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
     </script>

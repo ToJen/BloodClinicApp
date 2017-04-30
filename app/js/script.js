@@ -198,7 +198,7 @@ const initialState = {
 var store = initialState
 
 const fetchBloodClinicServer = () => {
-  const uri = '//bloodclinicserver.herokuapp.com/api'
+  const uri = 'https://bloodclinicserver.herokuapp.com/api'
   const date = new Date()
   const payload = {'date': date}
   const headers = new Headers({'Content-Type': 'application/json'})
@@ -216,14 +216,13 @@ const fetchBloodClinicServer = () => {
     })
 }
 
-<<<<<<< Updated upstream
 fetchBloodClinicServer()
-=======
-// function launchModal() {
 
-// }
+function launchModal() {
 
-function setModalTitle(currentLocation)
+}
+
+function setModalTitle()
 {
   if(currentLocation.lat == 47.5719363 && currentLocation.lng == -52.7419408) {
     currentClinic = "HS";
@@ -244,4 +243,3 @@ setModalTitle();
   // {47.6102897, -52.7249336},  // majorsPath
   // {47.5574587, -52.7215271},  // stClaresMercy
   // {47.5287682, -52.7496391}   // waterford
->>>>>>> Stashed changes
