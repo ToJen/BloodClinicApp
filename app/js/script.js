@@ -1,6 +1,6 @@
-window.onload = function() {
-  plotChart();
-}
+/* window.onload = function() {
+ *   plotChart();
+ * }*/
 
 var map, infoWindow, currentLocation, currentClinic;
 
@@ -41,7 +41,7 @@ function initMap() {
       };
 
       console.log(currentLocation.lat + "\t" + currentLocation.lng);
-            
+
       var userMarker = new google.maps.Marker({
         position: currentLocation,
         map: map,
@@ -103,13 +103,13 @@ function initMap() {
         return;
       }
       var icon = "imgs/marker.png";
-                /*{
-                  url: place.icon,
-                  size: new google.maps.Size(71, 71),
-                  origin: new google.maps.Point(0, 0),
-                  anchor: new google.maps.Point(17, 34),
-                  scaledSize: new google.maps.Size(25, 25)
-                };*/
+      /*{
+         url: place.icon,
+         size: new google.maps.Size(71, 71),
+         origin: new google.maps.Point(0, 0),
+         anchor: new google.maps.Point(17, 34),
+         scaledSize: new google.maps.Size(25, 25)
+         };*/
 
       // Create a marker for each place.
       markers.push(new google.maps.Marker({
@@ -135,13 +135,14 @@ function initMap() {
   var markers2 = locations.map(function(location, i) {
     console.log(location)
     console.log(ids[i])
-      let marker = new google.maps.Marker({
-        position: location,
-        label: ids[i]
-      });
+    let marker = new google.maps.Marker({
+      position: location,
+      label: ids[i]
+    });
     marker.addListener('click', function() {
       console.log(marker.label);
       fetchBloodClinicServer();
+      plotChart(store['daily_rates'][marker.label]);
       $("#infoModal").modal("show");
     });
     return marker;
@@ -275,7 +276,7 @@ setModalTitle();*/
 //     }]
 //   }
 //   // data: data,
-// });  
+// });
   // options: options
 
 // var options = {
@@ -292,7 +293,7 @@ setModalTitle();*/
 // var barData = {
 //     labels: ['Italy', 'UK', 'USA', 'Germany', 'France', 'Japan'],
 //     datasets: [
-       
+
 //         {
 //             label: '2014 customers #',
 //             fillColor: '#679ddb',
@@ -306,20 +307,22 @@ setModalTitle();*/
 
 
 
-function plotChart()
+function plotChart(data)
 {
 
+  const labels = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm']
   var ctx = document.getElementById("myChart").getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      labels: labels,
       datasets: [{
-        data: [12, 19, 3, 17, 28],
+        /* data: [0, 10, 20, 30, 40, 30, 20, 20, 40, 50, 0],*/
+        data: data.slice(6, 17),
         backgroundColor: "#679ddb"
       }]
     },
-    options: { 
+    options: {
       legend: { display: false }
     }
   });
