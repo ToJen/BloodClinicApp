@@ -1,3 +1,7 @@
+window.onload = function() {
+  plotChart();
+}
+
 var map, infoWindow, currentLocation, currentClinic;
 
 function initMap() {
@@ -218,7 +222,7 @@ const fetchBloodClinicServer = () => {
 
 fetchBloodClinicServer()
 
-function launchModal() {
+/*function launchModal() {
 
 }
 
@@ -237,9 +241,87 @@ function setModalTitle()
   console.log(currentClinic);
 }
 
-setModalTitle();
+setModalTitle();*/
 
   // {47.5719363, -52.7419408},  // healthScience
   // {47.6102897, -52.7249336},  // majorsPath
   // {47.5574587, -52.7215271},  // stClaresMercy
   // {47.5287682, -52.7496391}   // waterford
+
+
+/*******************************************************/
+// plot chart
+
+// var data = {
+//   labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+//   datasets: [
+//     {
+//       fillColor: '#679ddb',
+//       data: [3104, 1689, 1318, 589, 1199, 1436]
+//     }
+//   ]
+// };
+
+// var ctx = $("#myChart");
+// var myChart = new Chart(ctx, {
+//   type: 'bar',
+
+//   data: {
+//     labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+//     datasets: [{
+//       label: 'apples',
+//       data: [12, 19, 3, 17, 6],
+//       backgroundColor: "#679ddb"
+//     }]
+//   }
+//   // data: data,
+// });  
+  // options: options
+
+// var options = {
+//   responsive: true,
+//   scales: {
+//       yAxes: [{
+//           ticks: {
+//               beginAtZero:true
+//           }
+//       }]
+//   }
+// }
+
+// var barData = {
+//     labels: ['Italy', 'UK', 'USA', 'Germany', 'France', 'Japan'],
+//     datasets: [
+       
+//         {
+//             label: '2014 customers #',
+//             fillColor: '#679ddb',
+//             data: [3104, 1689, 1318, 589, 1199, 1436]
+//         }
+//     ]
+// };
+
+// var context = $("#myChart");
+// var clientsChart = new Chart(context).Bar(barData);
+
+
+
+function plotChart()
+{
+
+  var ctx = document.getElementById("myChart").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      datasets: [{
+        data: [12, 19, 3, 17, 28],
+        backgroundColor: "#679ddb"
+      }]
+    },
+    options: { 
+      legend: { display: false }
+    }
+  });
+
+}

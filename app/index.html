@@ -37,9 +37,7 @@
 		    <div id="navbar" class="navbar-collapse collapse">
 		      <ul class="nav navbar-nav">
 		        <li class="active"><a href="#">Home</a></li>
-		        <li><a href="#">About</a></li>
-		        <li><a href="#feedback">Feedback</a></li>
-		        <li><a href="#">Contact</a></li>
+		        <li><a href="#feedbackModal" data-toggle="modal">Feedback</a></li>
 		        <!-- <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
@@ -68,12 +66,12 @@
 			<hr>
 			<h3>Choose a Location</h3>
 			<!-- <div id="panel"></div> -->
-			<input id="pac-input" class="controls" type="text" placeholder="Find a clinic..." style="width:70%;height:25px;">
+			<input id="pac-input" class="controls" type="text" placeholder="Find a clinic near you..." style="width:70%;height:25px;">
 			<div id="map" style="width:100%;height:500px"></div> <!-- Google Maps-->
 			<br><hr><br>
 
 			<!-- Trigger modal -->
-			<a href="#infoModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+			<!-- <a href="#infoModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a> -->
 
 			<!-- Modal for Clinic Info -->
 			<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -97,21 +95,25 @@
 			      	<div class="tab-content">
 			      	  <div id="popTimes" class="tab-pane fade in active">
 			      	    <h3>Popular Times</h3>
-			      	    <p>Best time to visit</p>
-			      	    <div class="container" id="graph">
-			      	    	<!-- plot graph using fetched data -->
-			      	    </div>
-			      	    <p>Display graphy by</p>
-			      	    <div class="dropdown">
-								    <button class="btn btn-default dropdown-toggle" type="button" id="filterPlot" data-toggle="dropdown">Tutorials <span class="caret"></span></button>
-								    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-								      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Day</a></li>
-								      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Month</a></li>
-								      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Year</a></li>
-								      <li role="presentation" class="divider"></li>
-								      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Specific Date</a></li>
-								    </ul>
-			      	    </div>	<!-- .dropdown -->
+			      	    <div class="row">
+			      	    	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+					      	    <p><strong>Plan your visit:</strong> People typically spend <strong>1-2 hours</strong> here</p>
+					      	  </div>
+			      	    	<div class="container-fluid col-lg-4 col-md-4 col-sm-4 col-xs-4">
+					      	    <div class="dropdown">
+										    <button class="btn btn-default dropdown-toggle" type="button" id="filterPlot" data-toggle="dropdown">Display by <span class="caret"></span></button>
+										    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+										      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Day</a></li>
+										      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Week</a></li>
+										      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Month</a></li>
+										      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Year</a></li>
+										      <li role="presentation" class="divider"></li>
+										      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Specific Date</a></li>
+										    </ul>
+					      	    </div>	<!-- .dropdown -->
+					      	  </div>
+					      	</div> <!-- .row -->
+			      	    <canvas id="myChart"></canvas>
 			      	  </div>		<!-- #popTimes -->
 			      	  <div id="details" class="tab-pane fade">
 			      	    <h3>Detials</h3>
@@ -145,10 +147,96 @@
 				<span class="glyphicon glyphicon-chevron-up"></span></a></p>
 
 		</div>				<!-- .container 		-->
- 
-		<!--   <div class="container" id="feedback">
 
-		</div> -->
+
+		<!-- Modal for Feedback -->
+		<div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+
+		      <div class="modal-header"> 
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times</span>
+		        </button>
+		        <h4 class="modal-title" id="clinicLabel">Your Feedback</h4>
+		      </div> <!-- .modal-header -->
+
+		      <div class="modal-body">
+				 
+						<div class="container-fluid" id="feedback">
+
+							<form class="form-horizontal">
+							<fieldset>
+
+							<!-- Select Basic -->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="selectbasic">Clinic Name</label>
+							  <div class="col-md-4">
+							    <select id="selectbasic" name="selectbasic" class="form-control">
+							      <option value="1">Health Science</option>
+							      <option value="2">Major's Path</option>
+							      <option value="3">Waterford</option>
+							      <option value="4">St. Clare's</option>
+							    </select>
+							  </div>
+							</div>
+
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="time_arrived">Arrival Time</label>  
+							  <div class="col-md-4">
+							  <input id="time_arrived" name="time_arrived" type="text" placeholder="e.g. 10:30am" class="form-control input-md" required="">
+							  <span class="help-block">When you got there</span>  
+							  </div>
+							</div>
+
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="waiting_time">Wait Time</label>  
+							  <div class="col-md-4">
+							  <input id="waiting_time" name="waiting_time" type="text" placeholder="e.g. 25 minutes" class="form-control input-md" required="">
+							  <span class="help-block">How long you waited before your turn</span>  
+							  </div>
+							</div>
+
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="departure_time">Departure Time</label>  
+							  <div class="col-md-4">
+							  <input id="departure_time" name="departure_time" type="text" placeholder="e.g. 1:15pm" class="form-control input-md" required="">
+							  <span class="help-block">When you left</span>  
+							  </div>
+							</div>
+
+							<!-- Textarea -->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="textarea">Other</label>
+							  <div class="col-md-4">                     
+							    <textarea class="form-control" id="textarea" name="textarea">Anything you would like to say to us</textarea>
+							  </div>
+							</div>
+
+							<!-- Button -->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="submit_feedback"></label>
+							  <!-- <div class="col-md-4"> -->
+							    <button id="submit_feedback" name="submit_feedback" class="btn btn-primary">Submit</button>
+							  <!-- </div> -->
+							</div>
+
+							</fieldset>
+							</form>
+						</div>		<!-- #feedback -->
+
+		      </div> <!-- .modal-body   -->
+
+		      <!-- <div class="modal-footer">
+
+		      </div>  --><!-- .modal-footer -->
+
+		    </div>  <!-- .modal-content -->
+		  </div>    <!-- .modal-dialog  --> 
+		</div>      <!-- .modal-fade    -->
 
 		<script>
 			// for scroll to top button
@@ -165,6 +253,8 @@
 			});
 		</script>		
 
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3_sShiBsrFUV5rG4cWZZonUyabkxQTWA&libraries=places&callback=initMap"></script>
