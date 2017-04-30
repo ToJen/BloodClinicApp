@@ -145,6 +145,7 @@ function initMap() {
       fetchBloodClinicServer();
       plotChart(store['daily_rates'][marker.label]);
       $('#clinicLabel').text(marker.name);
+      updateImage(marker.name);
       $("#infoModal").modal("show");
     });
     return marker;
@@ -231,6 +232,30 @@ const fetchBloodClinicServer = () => {
 }
 
 fetchBloodClinicServer()
+
+function updateImage(clinic) 
+{
+  if(clinic == 'Health Science Centre') {
+    $('#clinicImg').attr("src","imgs/hs.jpg");
+    $('#addr').text(" 300 Prince Philip Dr, St. John's, NL A1B 3V6");
+    $('#contact').text(" (709) 777-6300");
+  } 
+  else if(clinic == 'Major\'s Path') {
+    $('#clinicImg').attr("src","imgs/mp.jpg");
+    $('#addr').text(" 35 Major's Path, St. John's, NL A1A 4Z9");
+    $('#contact').text(" (709) 752-3658");
+  } 
+  else if(clinic == 'Waterford') {
+    $('#clinicImg').attr("src","imgs/wf.jpg");
+    $('#addr').text(" 306 Waterford Bridge Road. St. John's, NL A1E 4J8");
+    $('#contact').text(" (709) 777-3300");
+  } 
+  else if(clinic == 'St. Claire\'s Hospital') {
+    $('#clinicImg').attr("src","imgs/sc.jpg");
+    $('#addr').text("154 Lemarchant Rd, St. John's, NL A1C 2H6");
+    $('#contact').text(" (709) 777-5000");
+  }
+}
 
 /*function launchModal() {
 
