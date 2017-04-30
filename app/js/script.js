@@ -253,67 +253,12 @@ setModalTitle();*/
 /*******************************************************/
 // plot chart
 
-// var data = {
-//   labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-//   datasets: [
-//     {
-//       fillColor: '#679ddb',
-//       data: [3104, 1689, 1318, 589, 1199, 1436]
-//     }
-//   ]
-// };
-
-// var ctx = $("#myChart");
-// var myChart = new Chart(ctx, {
-//   type: 'bar',
-
-//   data: {
-//     labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-//     datasets: [{
-//       label: 'apples',
-//       data: [12, 19, 3, 17, 6],
-//       backgroundColor: "#679ddb"
-//     }]
-//   }
-//   // data: data,
-// });
-  // options: options
-
-// var options = {
-//   responsive: true,
-//   scales: {
-//       yAxes: [{
-//           ticks: {
-//               beginAtZero:true
-//           }
-//       }]
-//   }
-// }
-
-// var barData = {
-//     labels: ['Italy', 'UK', 'USA', 'Germany', 'France', 'Japan'],
-//     datasets: [
-
-//         {
-//             label: '2014 customers #',
-//             fillColor: '#679ddb',
-//             data: [3104, 1689, 1318, 589, 1199, 1436]
-//         }
-//     ]
-// };
-
-// var context = $("#myChart");
-// var clientsChart = new Chart(context).Bar(barData);
-
-
-var myChart;
-
 function plotChart(data)
 {
 
   const labels = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm']
   var ctx = document.getElementById("myChart").getContext('2d');
-  myChart = new Chart(ctx, {
+  var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: labels,
@@ -328,8 +273,8 @@ function plotChart(data)
     }
   });
 
-$("#infoModal").on("hidden.bs.modal", function(){
-  myChart.destroy();
-});
+  $("#infoModal").on("hidden.bs.modal", function(){
+    myChart.destroy();
+  });
 
 }

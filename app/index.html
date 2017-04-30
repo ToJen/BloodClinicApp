@@ -62,16 +62,42 @@
 					
 		<div class="container">
 			<h1>Blood Clinic App</h1>
-			<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+			<p>No one likes waiting in line for hours, especially when they visit the blod clinic. Our solution is to help you save time by showing you the most popular and least busy times that people are at each clinic everyday.</p>
+			<br>
+			<div class="well well-lg">
+				<h4>Current Waiting Time:</h4>
+				<table class="table table-hover">
+			    <thead>
+			      <tr>
+			        <th>Clinic</th>
+			        <th>Wait Time</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td>Health Science</td>
+			        <td>45 minutes</td>
+			      </tr>
+			      <tr>
+			        <td>St. Clare's</td>
+			        <td>1 hour 3 minutes</td>
+			      </tr>
+			      <tr>
+			        <td>Major's Path</td>
+			        <td>1 hour 17 minutes</td>
+			      </tr>
+			      <tr>
+			        <td>Waterford</td>
+			        <td>55 minutes</td>
+			      </tr>
+			    </tbody>
+			  </table>
+			</div>
 			<hr>
 			<h3>Choose a Location</h3>
-			<!-- <div id="panel"></div> -->
 			<input id="pac-input" class="controls" type="text" placeholder="Find a clinic near you..." style="width:70%;height:25px;">
 			<div id="map" style="width:100%;height:500px"></div> <!-- Google Maps-->
 			<br><hr><br>
-
-			<!-- Trigger modal -->
-			<!-- <a href="#infoModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a> -->
 
 			<!-- Modal for Clinic Info -->
 			<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -95,11 +121,12 @@
 			      	<div class="tab-content">
 			      	  <div id="popTimes" class="tab-pane fade in active">
 			      	    <h3>Popular Times</h3>
-			      	    <div class="row">
+			      	    <div class="container-fluid row">
 			      	    	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-					      	    <p><strong>Plan your visit:</strong> People typically spend <strong>1-2 hours</strong> here</p>
+					      	    <!-- <p><strong>Plan your visit:</strong> People typically spend <strong>1-2 hours</strong> here</p> -->
+					      	    <p>Plan your visit and <strong>save</strong> time!</p>
 					      	  </div>
-			      	    	<div class="container-fluid col-lg-4 col-md-4 col-sm-4 col-xs-4">
+			      	    	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 					      	    <div class="dropdown">
 										    <button class="btn btn-default dropdown-toggle" type="button" id="filterPlot" data-toggle="dropdown">Display by <span class="caret"></span></button>
 										    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
@@ -127,7 +154,7 @@
 					      	    </ul>
 					      	  </div>
 			      	    	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-					      	    <img class="img-responsive" id="clinicImg" src="imgs/majors_path.jpg">
+					      	    <img class="img-responsive" id="clinicImg" src="imgs/mp.jpg">
 					      	  </div>
 					      	</div>	<!-- .row 				-->
 			      	  </div>		<!-- #details 		-->
