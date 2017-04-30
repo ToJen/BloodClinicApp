@@ -1,9 +1,9 @@
-var map, infoWindow, currentLocation;
+var map, infoWindow, currentLocation, currentClinic;
 
 function initMap() {
   var healthScience = {lat: 47.5719363, lng:-52.7419408};
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 5,
+    zoom: 11,
     center: healthScience
   });
 
@@ -36,6 +36,8 @@ function initMap() {
         lng: position.coords.longitude
       };
 
+      console.log(currentLocation.lat + "\t" + currentLocation.lng);
+            
       var userMarker = new google.maps.Marker({
         position: currentLocation,
         map: map,
@@ -54,7 +56,7 @@ function initMap() {
     handleLocationError(false, infoWindow, map.getCenter());
   }
 
-
+  /*************************************************************/
   // show nearest clinic
   // var service = new google.maps.places.PlacesService(map);
   // service.nearbySearch({
@@ -64,7 +66,7 @@ function initMap() {
   // }, callback);
 
   /*************************************************************/
-  // search
+  // search feature
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -74,17 +76,16 @@ function initMap() {
     searchBox.setBounds(map.getBounds());
   });
 
-var markers = [];
-  // Listen for the event fired when the user selects a prediction and retrieve
-  // more details for that place.
+  var markers = [];
+  // Listen for the event fired when the user selects a prediction and retrieve more details for that place.
   searchBox.addListener('places_changed', function() {
     var places = searchBox.getPlaces();
 
-    if (places.length == 0) {
+    if (places.length == 0) { // no location match
       return;
     }
 
-    // Clear out the old markers.
+    // Clear out the old markers
     markers.forEach(function(marker) {
       marker.setMap(null);
     });
@@ -113,9 +114,8 @@ var markers = [];
         title: place.name,
         position: place.geometry.location
       }));
-
-      if (place.geometry.viewport) {
-        // Only geocodes have viewport.
+      currentLocation = place.geometry.location;
+      if (place.geometry.viewport) { // Only geocodes have viewport.
         bounds.union(place.geometry.viewport);
       } else {
         bounds.extend(place.geometry.location);
@@ -128,7 +128,7 @@ var markers = [];
   /*************************************************************/
   // cluster clinic locations
   var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  var markers = locations.map(function(location, i) {
+  var markers2 = locations.map(function(location, i) {
     console.log(location)
     console.log(ids[i])
       let marker = new google.maps.Marker({
@@ -138,11 +138,12 @@ var markers = [];
     marker.addListener('click', function() {
       console.log(marker.label);
       fetchBloodClinicServer();
+      $("#infoModal").modal("show");
     });
     return marker;
   });
 
-  var markerCluster = new MarkerClusterer(map, markers,
+  var markerCluster = new MarkerClusterer(map, markers2,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
 }
@@ -153,6 +154,15 @@ function callback(results, status) {
       createMarker(results[i]);
     }
   }
+}
+
+// necessary?
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
 }
 
 var locations = [
@@ -168,15 +178,6 @@ var ids = [
   'sc',
   'wf'
 ];
-
-// necessary?
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
-  infoWindow.open(map);
-}
 
 // bloodclinicserver
 const initialState = {
@@ -215,4 +216,32 @@ const fetchBloodClinicServer = () => {
     })
 }
 
+<<<<<<< Updated upstream
 fetchBloodClinicServer()
+=======
+// function launchModal() {
+
+// }
+
+function setModalTitle(currentLocation)
+{
+  if(currentLocation.lat == 47.5719363 && currentLocation.lng == -52.7419408) {
+    currentClinic = "HS";
+  } else if(currentLocation.lat == 47.6102897 && currentLocation.lng == -52.7249336) {
+    currentClinic = "MP";
+  } else if(currentLocation.lat == 47.5574587 && currentLocation.lng == -52.7215271) {
+    currentClinic = "SC";
+  } else if(currentLocation.lat == 47.5287682 && currentLocation.lng == -52.7496391) {
+    currentClinic = "WF";
+  } else currentClinic = "none";
+
+  console.log(currentClinic);
+}
+
+setModalTitle();
+
+  // {47.5719363, -52.7419408},  // healthScience
+  // {47.6102897, -52.7249336},  // majorsPath
+  // {47.5574587, -52.7215271},  // stClaresMercy
+  // {47.5287682, -52.7496391}   // waterford
+>>>>>>> Stashed changes

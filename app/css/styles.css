@@ -63,7 +63,7 @@ body { font-family: sans-serif; }
 #pac-input {
   background-color: #fff;
   font-family: Roboto;
-  font-size: 15px;
+  font-size: 25px;
   font-weight: 300;
   margin-left: 12px;
   padding: 0 11px 0 13px;
@@ -71,9 +71,11 @@ body { font-family: sans-serif; }
 	width: 700px;
 }
 
-/*#pac-input .controls {
-	width: 700px;
-}*/
+#pac-input,
+input::-webkit-input-placeholder {
+  font-size: 20px;
+  line-height: 3;
+}
 
 #pac-input:focus {
   border-color: #4d90fe;

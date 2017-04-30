@@ -15,6 +15,10 @@
 	</head>
 
 	<body>
+
+		<!-- add navbar to go to feedback section flat, bright red and white, scroll to top feature
+				where are you now? how long was your ride here? time logged in? duration of wait? time left?
+		-->
 					
 		<div class="container">
 			<h1>Blood Clinic App</h1>
@@ -22,9 +26,63 @@
 			<hr>
 			<h3>Choose a Location</h3>
 			<!-- <div id="panel"></div> -->
-			<input id="pac-input" class="controls" type="text" placeholder="Find a clinic..." style="width:70%;height:20px;">
+			<input id="pac-input" class="controls" type="text" placeholder="Find a clinic..." style="width:70%;height:25px;">
 			<div id="map" style="width:100%;height:500px"></div> <!-- Google Maps-->
-			<br>
+			<br><hr><br>
+
+			<!-- Trigger modal -->
+			<a href="#infoModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+
+			<!-- Modal for Clinic Info -->
+			<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+
+			      <div class="modal-header"> 
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times</span>
+			        </button>
+			        <h4 class="modal-title" id="clinicLabel"></h4>		<!-- clinic name -->
+			      </div> <!-- .modal-header -->
+
+			      <div class="modal-body">
+
+			      	<ul class="nav nav-pills">
+			      	  <li class="active"><a data-toggle="pill" href="#popTimes">Popular Times</a></li>
+			      	  <li><a data-toggle="pill" href="#details">Clinic Details</a></li>
+			      	</ul>
+
+			      	<div class="tab-content">
+			      	  <div id="popTimes" class="tab-pane fade in active">
+			      	    <h3>Popular Times</h3>
+			      	    <p>Best time to visit</p>
+			      	  </div>		<!-- #popTimes -->
+			      	  <div id="details" class="tab-pane fade">
+			      	    <h3>Detials</h3>
+			      	    <div class="row">
+			      	    	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+					      	    <ul class="list-group">
+					      	      <li class="list-group-item">Address:</li>
+					      	      <li class="list-group-item">Hours:</li>
+					      	      <li class="list-group-item">Contact:</li>
+					      	      <li class="list-group-item">Wheelchair accessible:</li>
+					      	    </ul>
+					      	  </div>
+			      	    	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+					      	    <img src="imgs/majors_path.jpg" id="clinicImg">
+					      	  </div>
+					      	</div>	<!-- .row 				-->
+			      	  </div>		<!-- #details 		-->
+			      	</div>			<!-- #tab-content -->
+
+			      </div> <!-- .modal-body   -->
+
+			      <div class="modal-footer">
+			      </div> <!-- .modal-footer -->
+
+			    </div>  <!-- .modal-content -->
+			  </div>    <!-- .modal-dialog  --> 
+			</div>      <!-- .modal-fade    -->
 		</div>
 
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
