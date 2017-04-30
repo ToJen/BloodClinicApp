@@ -137,12 +137,14 @@ function initMap() {
     console.log(ids[i])
     let marker = new google.maps.Marker({
       position: location,
-      label: ids[i]
+      label: ids[i],
+      name: names[i]
     });
     marker.addListener('click', function() {
       console.log(marker.label);
       fetchBloodClinicServer();
       plotChart(store['daily_rates'][marker.label]);
+      $('#clinicLabel').text(marker.name);
       $("#infoModal").modal("show");
     });
     return marker;
@@ -183,6 +185,13 @@ var ids = [
   'sc',
   'wf'
 ];
+
+var names = [
+  'Health Science Centre',
+  'Major\'s Path',
+  'St. Claire\'s Hospital',
+  'Waterford'
+]
 
 // bloodclinicserver
 const initialState = {
