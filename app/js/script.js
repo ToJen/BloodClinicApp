@@ -306,13 +306,14 @@ setModalTitle();*/
 // var clientsChart = new Chart(context).Bar(barData);
 
 
+var myChart;
 
 function plotChart(data)
 {
 
   const labels = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm']
   var ctx = document.getElementById("myChart").getContext('2d');
-  var myChart = new Chart(ctx, {
+  myChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: labels,
@@ -326,5 +327,9 @@ function plotChart(data)
       legend: { display: false }
     }
   });
+
+$("#infoModal").on("hidden.bs.modal", function(){
+  myChart.destroy();
+});
 
 }
