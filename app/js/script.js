@@ -211,7 +211,21 @@ const initialState = {
 }
 
 var store = initialState
+// Update wait times
+function updateTimes(store) {
+  const hs = store.current_rate['hs'] || null
+  const sc = store.current_rate['sc'] || null
+  const mp = store.current_rate['mp'] || null
+  const wf = store.current_rate['wf'] || null
 
+  $('#hs').text(hs + ' minutes')
+  $('#sc').text(sc + ' minutes')
+  $('#mp').text(mp + ' minutes')
+  $('#wf').text(wf + ' minutes')
+  console.log(hs)
+}
+
+// Update data from backend
 const fetchBloodClinicServer = () => {
   const uri = 'https://bloodclinicserver.herokuapp.com/api'
   const date = new Date()
@@ -228,28 +242,30 @@ const fetchBloodClinicServer = () => {
       console.log(store)
       store = json
       console.log(store)
+      updateTimes(store)
     })
 }
 
 fetchBloodClinicServer()
 
-function updateImage(clinic) 
+
+function updateImage(clinic)
 {
   if(clinic == 'Health Science Centre') {
     $('#clinicImg').attr("src","imgs/hs.jpg");
     $('#addr').text(" 300 Prince Philip Dr, St. John's, NL A1B 3V6");
     $('#contact').text(" (709) 777-6300");
-  } 
+  }
   else if(clinic == 'Major\'s Path') {
     $('#clinicImg').attr("src","imgs/mp.jpg");
     $('#addr').text(" 35 Major's Path, St. John's, NL A1A 4Z9");
     $('#contact').text(" (709) 752-3658");
-  } 
+  }
   else if(clinic == 'Waterford') {
     $('#clinicImg').attr("src","imgs/wf.jpg");
     $('#addr').text(" 306 Waterford Bridge Road. St. John's, NL A1E 4J8");
     $('#contact').text(" (709) 777-3300");
-  } 
+  }
   else if(clinic == 'St. Claire\'s Hospital') {
     $('#clinicImg').attr("src","imgs/sc.jpg");
     $('#addr').text("154 Lemarchant Rd, St. John's, NL A1C 2H6");
@@ -259,29 +275,29 @@ function updateImage(clinic)
 
 /*function launchModal() {
 
-}
+   }
 
-function setModalTitle()
-{
-  if(currentLocation.lat == 47.5719363 && currentLocation.lng == -52.7419408) {
-    currentClinic = "HS";
-  } else if(currentLocation.lat == 47.6102897 && currentLocation.lng == -52.7249336) {
-    currentClinic = "MP";
-  } else if(currentLocation.lat == 47.5574587 && currentLocation.lng == -52.7215271) {
-    currentClinic = "SC";
-  } else if(currentLocation.lat == 47.5287682 && currentLocation.lng == -52.7496391) {
-    currentClinic = "WF";
-  } else currentClinic = "none";
+   function setModalTitle()
+   {
+   if(currentLocation.lat == 47.5719363 && currentLocation.lng == -52.7419408) {
+   currentClinic = "HS";
+   } else if(currentLocation.lat == 47.6102897 && currentLocation.lng == -52.7249336) {
+   currentClinic = "MP";
+   } else if(currentLocation.lat == 47.5574587 && currentLocation.lng == -52.7215271) {
+   currentClinic = "SC";
+   } else if(currentLocation.lat == 47.5287682 && currentLocation.lng == -52.7496391) {
+   currentClinic = "WF";
+   } else currentClinic = "none";
 
-  console.log(currentClinic);
-}
+   console.log(currentClinic);
+   }
 
-setModalTitle();*/
+   setModalTitle();*/
 
-  // {47.5719363, -52.7419408},  // healthScience
-  // {47.6102897, -52.7249336},  // majorsPath
-  // {47.5574587, -52.7215271},  // stClaresMercy
-  // {47.5287682, -52.7496391}   // waterford
+// {47.5719363, -52.7419408},  // healthScience
+// {47.6102897, -52.7249336},  // majorsPath
+// {47.5574587, -52.7215271},  // stClaresMercy
+// {47.5287682, -52.7496391}   // waterford
 
 
 /*******************************************************/

@@ -59,7 +59,7 @@
 		    </div>		<!--/.nav-collapse -->
 		  </div>			<!--/.container-fluid -->
 		</nav>
-					
+
 		<div class="container">
 			<h1>Blood Clinic App</h1>
 			<p>No one likes waiting in line for hours, especially when they visit the blod clinic. Our solution is to help you save time by showing you the most popular and least busy times that people are at each clinic everyday.</p>
@@ -76,19 +76,19 @@
 			    <tbody>
 			      <tr>
 			        <td>Health Science</td>
-			        <td>45 minutes</td>
+			        <td><span id='hs'>45 minutes</span></td>
 			      </tr>
 			      <tr>
 			        <td>St. Clare's</td>
-			        <td>1 hour 3 minutes</td>
+			        <td><span id='sc'>1 hour 3 minutes</span></td>
 			      </tr>
 			      <tr>
 			        <td>Major's Path</td>
-			        <td>1 hour 17 minutes</td>
+			        <td><span id='mp'>1 hour 17 minutes</span></td>
 			      </tr>
 			      <tr>
 			        <td>Waterford</td>
-			        <td>55 minutes</td>
+			        <td><span id='wf'>55 minutes</span></td>
 			      </tr>
 			    </tbody>
 			  </table>
@@ -104,7 +104,7 @@
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 
-			      <div class="modal-header"> 
+			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times</span>
 			        </button>
@@ -165,7 +165,7 @@
 			      </div> <!-- .modal-footer -->
 
 			    </div>  <!-- .modal-content -->
-			  </div>    <!-- .modal-dialog  --> 
+			  </div>    <!-- .modal-dialog  -->
 			</div>      <!-- .modal-fade    -->
 
 			<p class="pull-right"><a href="#" id="backToTop" class="btn btn-primary btn-lg backToTop" role="button">
@@ -179,7 +179,7 @@
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
 
-		      <div class="modal-header"> 
+		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times</span>
 		        </button>
@@ -187,7 +187,7 @@
 		      </div> <!-- .modal-header -->
 
 		      <div class="modal-body">
-				 
+
 						<div class="container-fluid" id="feedback">
 
 							<form class="form-horizontal">
@@ -208,35 +208,35 @@
 
 							<!-- Text input-->
 							<div class="form-group">
-							  <label class="col-md-4 control-label" for="time_arrived">Arrival Time</label>  
+							  <label class="col-md-4 control-label" for="time_arrived">Arrival Time</label>
 							  <div class="col-md-4">
 							  <input id="time_arrived" name="time_arrived" type="text" placeholder="e.g. 10:30am" class="form-control input-md" required="">
-							  <span class="help-block">When you got there</span>  
+							  <span class="help-block">When you got there</span>
 							  </div>
 							</div>
 
 							<!-- Text input-->
 							<div class="form-group">
-							  <label class="col-md-4 control-label" for="waiting_time">Wait Time</label>  
+							  <label class="col-md-4 control-label" for="waiting_time">Wait Time</label>
 							  <div class="col-md-4">
 							  <input id="waiting_time" name="waiting_time" type="text" placeholder="e.g. 25 minutes" class="form-control input-md" required="">
-							  <span class="help-block">How long you waited before your turn</span>  
+							  <span class="help-block">How long you waited before your turn</span>
 							  </div>
 							</div>
 
 							<!-- Text input-->
 							<div class="form-group">
-							  <label class="col-md-4 control-label" for="departure_time">Departure Time</label>  
+							  <label class="col-md-4 control-label" for="departure_time">Departure Time</label>
 							  <div class="col-md-4">
 							  <input id="departure_time" name="departure_time" type="text" placeholder="e.g. 1:15pm" class="form-control input-md" required="">
-							  <span class="help-block">When you left</span>  
+							  <span class="help-block">When you left</span>
 							  </div>
 							</div>
 
 							<!-- Textarea -->
 							<div class="form-group">
 							  <label class="col-md-4 control-label" for="textarea">Other</label>
-							  <div class="col-md-4">                     
+							  <div class="col-md-4">
 							    <textarea class="form-control" id="textarea" name="textarea">Anything you would like to say to us</textarea>
 							  </div>
 							</div>
@@ -260,13 +260,13 @@
 		      </div>  --><!-- .modal-footer -->
 
 		    </div>  <!-- .modal-content -->
-		  </div>    <!-- .modal-dialog  --> 
+		  </div>    <!-- .modal-dialog  -->
 		</div>      <!-- .modal-fade    -->
 
 		<script>
 			// for scroll to top button
 			$(window).scroll(function() {
-				if ($(this).scrollTop() > 50) 
+				if ($(this).scrollTop() > 50)
 					$("#backToTop").fadeIn();
 				else
 					$("#backToTop").fadeOut();
@@ -276,7 +276,7 @@
 			  $("html, body").animate({scrollTop: 10}, 800);
 			  return false;
 			});
-		</script>		
+		</script>
 
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
