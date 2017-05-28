@@ -1,7 +1,3 @@
-/* window.onload = function() {
- *   plotChart();
- * }*/
-
 var map, infoWindow, currentLocation, currentClinic;
 
 function initMap() {
@@ -15,17 +11,6 @@ function initMap() {
     position: healthScience,
     map: map
   });
-
-  /* var infoText = "................";
-   * var clinicInfo = new google.maps.InfoWindow({
-   *   content: infoText,
-   *   maxWidth: 400
-   * });
-
-   * marker.addListener('click', function() {
-   *   clinicInfo.open(map, marker);
-   *   alert("demo");
-   * });*/
 
   var currLocImg = "imgs/bluecircle.png";
 
@@ -103,13 +88,6 @@ function initMap() {
         return;
       }
       var icon = "imgs/marker.png";
-      /*{
-         url: place.icon,
-         size: new google.maps.Size(71, 71),
-         origin: new google.maps.Point(0, 0),
-         anchor: new google.maps.Point(17, 34),
-         scaledSize: new google.maps.Size(25, 25)
-         };*/
 
       // Create a marker for each place.
       markers.push(new google.maps.Marker({
@@ -127,7 +105,6 @@ function initMap() {
     });
     map.fitBounds(bounds);
   });
-
 
   /*************************************************************/
   // cluster clinic locations
@@ -248,7 +225,6 @@ const fetchBloodClinicServer = () => {
 
 fetchBloodClinicServer()
 
-
 function updateImage(clinic)
 {
   if(clinic == 'Health Science Centre') {
@@ -273,33 +249,6 @@ function updateImage(clinic)
   }
 }
 
-/*function launchModal() {
-
-   }
-
-   function setModalTitle()
-   {
-   if(currentLocation.lat == 47.5719363 && currentLocation.lng == -52.7419408) {
-   currentClinic = "HS";
-   } else if(currentLocation.lat == 47.6102897 && currentLocation.lng == -52.7249336) {
-   currentClinic = "MP";
-   } else if(currentLocation.lat == 47.5574587 && currentLocation.lng == -52.7215271) {
-   currentClinic = "SC";
-   } else if(currentLocation.lat == 47.5287682 && currentLocation.lng == -52.7496391) {
-   currentClinic = "WF";
-   } else currentClinic = "none";
-
-   console.log(currentClinic);
-   }
-
-   setModalTitle();*/
-
-// {47.5719363, -52.7419408},  // healthScience
-// {47.6102897, -52.7249336},  // majorsPath
-// {47.5574587, -52.7215271},  // stClaresMercy
-// {47.5287682, -52.7496391}   // waterford
-
-
 /*******************************************************/
 // plot chart
 
@@ -313,7 +262,6 @@ function plotChart(data)
     data: {
       labels: labels,
       datasets: [{
-        /* data: [0, 10, 20, 30, 40, 30, 20, 20, 40, 50, 0],*/
         data: data.slice(6, 17),
         backgroundColor: "#679ddb"
       }]
